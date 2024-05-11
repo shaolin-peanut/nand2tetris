@@ -1,0 +1,15 @@
+CHIP Or8Way {
+  IN in[8];
+  OUT out;
+  PARTS:
+  // layer 1
+  Or(a=in[0], b=in[1], out=one);
+  Or(a=in[2], b=in[3], out=two);
+  Or(a=in[4], b=in[5], out=three);
+  Or(a=in[6], b=in[7], out=four);
+  // layer 2
+  Or(a=one, b=two, out=right);
+  Or(a=three, b=four, out=left);
+  // layer 3 -> output
+  Or(a=left, b=right, out=out);
+}
